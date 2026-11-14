@@ -1,10 +1,8 @@
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
-// Función auxiliar.
-function esNumeroNoNegativo(num) {
-    return (typeof num === 'number' && num >= 0) ? true : false;
-}
 // TODO: Variable global
 let presupuesto = 0;
+let gastos = [];
+let idGasto = 0;
 
 function actualizarPresupuesto(presupActualizado) {
     // TODO
@@ -38,7 +36,31 @@ function CrearGasto(descripcion, valor) {
         this.actualizarValor = function(valor) {
             if (esNumeroNoNegativo(valor)) this.valor = valor;
         };
-        
+}
+
+function anyadirGasto() {
+
+}
+
+function borrarGasto() {
+    
+}
+
+function calcularBalance() {
+
+}
+
+function calcularTotalGastos() {
+
+}
+
+function listarGastos() {
+    return gastos;
+}
+
+// Función auxiliar.
+function esNumeroNoNegativo(num) {
+    return (typeof num === 'number' && num >= 0) ? true : false;
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
@@ -47,5 +69,10 @@ function CrearGasto(descripcion, valor) {
 export   {
     mostrarPresupuesto,
     actualizarPresupuesto,
-    CrearGasto
+    CrearGasto,
+    anyadirGasto,
+    borrarGasto,
+    calcularBalance,
+    calcularTotalGastos,
+    listarGastos
 }
