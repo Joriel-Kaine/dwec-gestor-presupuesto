@@ -1,14 +1,14 @@
 // TODO: Crear las funciones, objetos y variables indicadas en el enunciado
 // Función auxiliar.
-function esValorPositivo(valor) {
-    return (valor >= 0) ? true : false;
+function esNumeroNoNegativo(num) {
+    return (typeof num === 'number' && num >= 0) ? true : false;
 }
 // TODO: Variable global
 let presupuesto = 0;
 
 function actualizarPresupuesto(presupActualizado) {
     // TODO
-    if (esValorPositivo(presupActualizado)) {
+    if (esNumeroNoNegativo(presupActualizado)) {
         return presupuesto = presupActualizado;
     }
     else {
@@ -27,16 +27,16 @@ function CrearGasto(descripcion, valor) {
         this.descripcion = descripcion;
         this.valor = valor;
 
+        if (!esNumeroNoNegativo(this.valor)) this.valor = 0;
+
         this.mostrarGasto = function() {
             return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €`
         };
-        this.actualizarDescripcion = function() {
-
+        this.actualizarDescripcion = function(descripcion) {
+            this.descripcion = descripcion;
         };
         this.actualizarValor = function(valor) {
-            if (esValorPositivo(valor)) {
-                return this.valor = valor;
-            }
+            if (esNumeroNoNegativo(valor)) this.valor = valor;
         };
         
 }
