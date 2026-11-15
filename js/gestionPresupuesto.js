@@ -56,8 +56,12 @@ ${saltoLineaCadena(this.etiquetas)}`
         }
         this.anyadirEtiquetas(...etiquetas);
 
-        this.borrarEtiquetas = function() {
+        this.borrarEtiquetas = function(...etiquetas) {
+            for (let etiqueta of etiquetas) {
+                let index = this.etiquetas.indexOf(etiqueta);
 
+                if (index >= 0) this.etiquetas.splice(index, 1);
+            }
         }
 }
 
