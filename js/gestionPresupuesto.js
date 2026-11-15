@@ -41,8 +41,8 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
         this.mostrarGastoCompleto = function() {
 
         }
-        this.actualizarFecha = function() {
-            
+        this.actualizarFecha = function(fecha) {
+            if (!isNaN(Date.parse(fecha))) this.fecha = Date.parse(fecha);
         }
         this.anyadirEtiquetas = function(...etiquetas) {
             for (let etiqueta of etiquetas) {
