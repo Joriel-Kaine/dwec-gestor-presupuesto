@@ -39,7 +39,10 @@ function CrearGasto(descripcion, valor, fecha, ...etiquetas) {
             if (esNumeroNoNegativo(valor)) this.valor = valor;
         };
         this.mostrarGastoCompleto = function() {
-
+            return `Gasto correspondiente a ${this.descripcion} con valor ${this.valor} €.
+Fecha: ${new Date(this.fecha).toLocaleString()}
+Etiquetas:
+${saltoLineaCadena(this.etiquetas)}`
         }
         this.actualizarFecha = function(fecha) {
             if (!isNaN(Date.parse(fecha))) this.fecha = Date.parse(fecha);
@@ -81,6 +84,15 @@ function listarGastos() {
 // Función auxiliar.
 function esNumeroNoNegativo(num) {
     return (typeof num === 'number' && num >= 0) ? true : false;
+}
+function saltoLineaCadena(etiquetas) {
+    let textoEtiquetas = '';
+
+    for (let i = 0; i < etiquetas.length; i++) {
+        textoEtiquetas += `- ${etiquetas[i]}\n`;
+    }
+
+    return textoEtiquetas;
 }
 
 // NO MODIFICAR A PARTIR DE AQUÍ: exportación de funciones y objetos creados para poder ejecutar los tests.
