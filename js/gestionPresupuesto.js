@@ -71,8 +71,14 @@ function anyadirGasto(gasto) {
     gastos.push(gasto);
 }
 
-function borrarGasto() {
-    
+function borrarGasto(id) {
+    for (let gasto of gastos) {
+        if (id === gasto.id) {
+            let index = gastos.indexOf(gasto);
+            gastos.splice(index, 1);
+            return;
+        }
+    }
 }
 
 function calcularBalance() {
