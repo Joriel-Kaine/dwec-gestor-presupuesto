@@ -63,6 +63,25 @@ ${saltoLineaCadena(this.etiquetas)}`
                 if (index >= 0) this.etiquetas.splice(index, 1);
             }
         }
+
+        this.obtenerPeriodoAgrupacion = function(periodo) {
+            let fecha = new Date(this.fecha);
+
+            if (periodo === 'anyo') {
+                return fecha.getFullYear().toLocaleString();
+            }
+            else if (periodo === 'mes') {
+                return `${fecha.getFullYear()
+                .toLocaleString()}-${(fecha.getMonth() + 1)
+                .toLocaleString().padStart(2, '0')}`;
+            }
+            else if (periodo === 'dia') {
+                return `${fecha.getFullYear()
+                .toLocaleString()}-${(fecha.getMonth() + 1)
+                .toLocaleString().padStart(2, '0')}-${fecha.getDate()
+                .toLocaleString().padStart(2, '0')}`;
+            }
+        }
 }
 
 function anyadirGasto(gasto) {
@@ -101,6 +120,14 @@ function listarGastos() {
     return gastos;
 }
 
+function filtrarGastos() {
+
+}
+
+function agruparGastos() {
+
+}
+
 // Función auxiliar.
 function esNumeroNoNegativo(num) {
     return (typeof num === 'number' && num >= 0) ? true : false;
@@ -126,5 +153,7 @@ export   {
     borrarGasto,
     calcularBalance,
     calcularTotalGastos,
-    listarGastos
+    listarGastos,
+    filtrarGastos,
+    agruparGastos
 }
