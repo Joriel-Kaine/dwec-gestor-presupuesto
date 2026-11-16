@@ -120,8 +120,42 @@ function listarGastos() {
     return gastos;
 }
 
-function filtrarGastos() {
+function filtrarGastos(filtros) {
+    let resultado = gastos.filter(function(gasto) {
+        if (filtros.fechaDesde !== undefined) {
+            if (gasto.fecha < Date.parse(filtros.fechaDesde)) return false;
+        }
+        
 
+        if (filtros.fechaHasta !== undefined) {
+            if (gasto.fecha > Date.parse(filtros.fechaHasta)) return false;
+        }
+
+        if (filtros.valorMinimo !== undefined) {
+            if (gasto.valor < filtros.valorMinimo) return false;
+        }
+
+        if (filtros.valorMaximo !== undefined) {
+            if (gasto.valor > filtros.valorMaximo) return false;
+        }
+        
+        if (filtros.descripcionContiene !== undefined) {
+            if (!gasto.descripcion.toLowerCase().
+            includes(filtros.descripcionContiene.toLowerCase())) return false;
+        }
+        
+        if (filtros.etiquetasTiene !== undefined) {
+            for (let etiqueta of filtros.etiquetasTiene) {
+                if (gasto.etiquetas.includes(etiqueta)) return true;
+            }
+
+            return false;
+        }
+
+        return true;
+    });
+
+    return resultado;
 }
 
 function agruparGastos() {
