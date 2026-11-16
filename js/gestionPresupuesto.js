@@ -77,14 +77,14 @@ function borrarGasto(id) {
         if (id === gasto.id) {
             let index = gastos.indexOf(gasto);
             gastos.splice(index, 1);
-            
+
             return;
         }
     }
 }
 
 function calcularBalance() {
-
+    return presupuesto - calcularTotalGastos();
 }
 
 function calcularTotalGastos() {
