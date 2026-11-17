@@ -68,18 +68,18 @@ ${saltoLineaCadena(this.etiquetas)}`
             let fecha = new Date(this.fecha);
 
             if (periodo === 'anyo') {
-                return fecha.getFullYear().toLocaleString();
+                return fecha.getFullYear().toString();
             }
             else if (periodo === 'mes') {
                 return `${fecha.getFullYear()
-                .toLocaleString()}-${(fecha.getMonth() + 1)
-                .toLocaleString().padStart(2, '0')}`;
+                .toString()}-${(fecha.getMonth() + 1)
+                .toString().padStart(2, '0')}`;
             }
             else if (periodo === 'dia') {
                 return `${fecha.getFullYear()
-                .toLocaleString()}-${(fecha.getMonth() + 1)
-                .toLocaleString().padStart(2, '0')}-${fecha.getDate()
-                .toLocaleString().padStart(2, '0')}`;
+                .toString()}-${(fecha.getMonth() + 1)
+                .toString().padStart(2, '0')}-${fecha.getDate()
+                .toString().padStart(2, '0')}`;
             }
         }
 }
