@@ -125,7 +125,6 @@ function filtrarGastos(filtros) {
         if (filtros.fechaDesde !== undefined) {
             if (gasto.fecha < Date.parse(filtros.fechaDesde)) return false;
         }
-        
 
         if (filtros.fechaHasta !== undefined) {
             if (gasto.fecha > Date.parse(filtros.fechaHasta)) return false;
@@ -158,8 +157,27 @@ function filtrarGastos(filtros) {
     return resultado;
 }
 
-function agruparGastos() {
+function agruparGastos(periodo, etiquetas, fechaDesde, fechaHasta) {
+    let filtros = {
+        etiquetasTiene: etiquetas,
+        fechaDesde: fechaDesde,
+        fechaHasta: fechaHasta
+    }
 
+    let gastosFiltrados = filtrarGastos(filtros);
+
+    let resultado = gastosFiltrados.reduce(function(acumulador, gasto) {
+        let periodoGasto = gasto.obtenerPeriodoAgrupacion(periodo);
+
+        if (acumulador[periodoGasto] === undefined) {
+            acumulador[periodoGasto] = 0;
+        }
+
+        acumulador[periodoGasto] += gasto.valor;
+        return acumulador;
+    }, {});
+
+    return resultado;
 }
 
 // Función auxiliar.
