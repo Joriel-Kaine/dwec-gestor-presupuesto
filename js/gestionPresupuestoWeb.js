@@ -1,7 +1,6 @@
 // Variables globales.
 
 
-
 // Funciones.
 function mostrarDatoEnId(idElemento, valor) {
     let elemento = document.getElementById(idElemento);
@@ -21,7 +20,8 @@ function mostrarGastoWeb(idElemento, gasto) {
 
     let divGastoFecha = document.createElement('div');
     divGastoFecha.classList.add('gasto-fecha');
-    divGastoFecha.textContent = gasto.fecha;
+    divGastoFecha.textContent = new Date(gasto.fecha).toLocaleDateString('es-ES',
+    {day: '2-digit', month: '2-digit', year: 'numeric'});
     divGasto.append(divGastoFecha);
 
     let divGastoValor = document.createElement('div');
@@ -78,7 +78,6 @@ function mostrarGastosAgrupadosWeb(idElemento, agrup, periodo) {
         spanAgrupacionDatoValor.textContent = agrup[periodoGasto];
         divAgrupacionDato.append(spanAgrupacionDatoValor);
     }
-
     contenedorPrincipal.append(divAgrupacion);
 }
 
