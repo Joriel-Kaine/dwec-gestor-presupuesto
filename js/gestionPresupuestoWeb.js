@@ -1,4 +1,5 @@
-// Variables globales.
+// Importaciones.
+import * as gesPre from './gestionPresupuesto.js'
 
 
 // Funciones.
@@ -79,6 +80,22 @@ function mostrarGastosAgrupadosWeb(idElemento, agrup, periodo) {
         divAgrupacionDato.append(spanAgrupacionDatoValor);
     }
     contenedorPrincipal.append(divAgrupacion);
+}
+
+function repintar() {
+    let presupuesto = gesPre.mostrarPresupuesto();
+    mostrarDatoEnId('presupuesto', presupuesto);
+
+    let gastosTotales = gesPre.calcularTotalGastos().toFixed(2);
+    mostrarDatoEnId('gastos-totales', `Gastos totales: ${gastosTotales}`);
+
+    let balanceTotal = gesPre.calcularBalance().toFixed(2);
+    mostrarDatoEnId('balance-total', `Balance: ${balanceTotal}`);
+
+    document.getElementById('listado-gastos-completo').innerHTML = '';
+    for (let gasto of gesPre.listarGastos()) {
+        mostrarGastoWeb('listado-gastos-completo', gasto);
+    }
 }
 
 
