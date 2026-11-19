@@ -75,4 +75,13 @@ for (let datosVarios2 of gesPre.filtrarGastos(filtrosVarios2)) {
 }
 
 // Mostrar el total de gastos agrupados por día.
+let gastosDia = gesPre.agruparGastos('dia');
+gesPreWeb.mostrarGastosAgrupadosWeb('agrupacion-dia', gastosDia, 'dia');
 
+// Mostrar el total de gastos agrupados por mes.
+let gastosMes = gesPre.agruparGastos('mes');
+gesPreWeb.mostrarGastosAgrupadosWeb('agrupacion-mes', gastosMes, 'mes');
+
+// Mostrar el total de gastos agrupados por año.
+let gastosAnyo = gesPre.agruparGastos('anyo');
+gesPreWeb.mostrarGastosAgrupadosWeb('agrupacion-anyo', gastosAnyo, 'anyo');

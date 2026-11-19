@@ -75,7 +75,7 @@ function mostrarGastosAgrupadosWeb(idElemento, agrup, periodo) {
 
         let spanAgrupacionDatoValor = document.createElement('span');
         spanAgrupacionDatoValor.classList.add('agrupacion-dato-valor');
-        spanAgrupacionDatoValor.textContent = agrup[periodoGasto];
+        spanAgrupacionDatoValor.textContent = `${agrup[periodoGasto].toFixed(2)} €`;
         divAgrupacionDato.append(spanAgrupacionDatoValor);
     }
     contenedorPrincipal.append(divAgrupacion);
